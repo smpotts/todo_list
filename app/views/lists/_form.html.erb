@@ -1,4 +1,4 @@
-<%= form_for(@list) do |f| %>
+<%= form_for(@list) do |form| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="form-group">
+    <%= form.text_field :description, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
+  <div class="form-group form-check">
+    <%= form.check_box :completed, class: 'form-check-input' %>
+    <%= form.label :completed, class: 'form-check-label' %>
   </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Update Todo Item", class: 'btn btn-default' %>
   </div>
 <% end %>
