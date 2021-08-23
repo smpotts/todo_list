@@ -8,12 +8,26 @@
       <tr class="table-secondary">
         <td class="striker"><%= link_to list.description, edit_list_path(list) %><% list.description %></td>
         <td>
+          <%= form_for(list) do |form| %>
+            <%= form.text_field :description, type: 'hidden' %>
+            <%= form.check_box :completed, :checked => false, :style => 'visibility: hidden' %>
+            <%= form.submit "Uncross" %>
+          <% end %>
+        </td>
+        <td>
           <% link_to 'Show', list %>
           <center><%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %></td></center>
       </tr>
     <% else %>
       <tr>
         <td><%= link_to list.description, edit_list_path(list) %><% list.description %></td>
+        <td>
+          <%= form_for(list) do |form| %>
+            <%= form.text_field :description, type: 'hidden' %>
+            <%= form.check_box :completed, :checked => true, :style => 'visibility: hidden' %>
+            <%= form.submit "Cross Off" %>
+          <% end %>
+        </td>
         <td><% link_to 'Show', list %>
           <center><%= link_to 'Delete', list, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?'  } %></center>
         </td>
@@ -30,3 +44,4 @@
 <br/>
 
 <%= link_to 'Delete Marked Items', home_trash_em_path, data: { confirm: 'Are you sure?'  }  %>
+<%= link_to 'Delete All Items', home_trash_em_all_path, data: { confirm: 'Are you sure?'  }  %>
