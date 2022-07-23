@@ -1,5 +1,5 @@
-# To Do List
-Creates a to do list application in Rails.
+# Todo List
+Creates a todo list application in Rails.
 
 ## Technologies
 Ruby version 2.6.8p205
